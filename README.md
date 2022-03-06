@@ -22,3 +22,17 @@ Dependency Injection is a software design pattern in which an object receives ot
 * There’s no need for big initializers
 * Possibility to override dependencies for tests
 * Without **3rd party library**
+
+
+## Property Wrappers
+
+A property wrapper adds a layer of separation between code that manages how a property is stored and the code that defines a property. For example, if you have properties that provide thread-safety checks or store their underlying data in a database, you have to write that code on every property. When you use a property wrapper, you write the management code once when you define the wrapper, and then reuse that management code by applying it to multiple properties.
+
+## Static Subscripts
+
+Instance subscripts, as described above, are subscripts that you call on an instance of a particular type. You can also define subscripts that are called on the type itself. This kind of subscript is called a type/static subscript.
+
+
+## Key paths
+
+Key paths essentially let us reference any instance property as a separate value. As such, they can be passed around, used in expressions, and enable a piece of code to get or set a property without actually knowing which exact property its working with.

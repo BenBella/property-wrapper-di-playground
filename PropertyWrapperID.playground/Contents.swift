@@ -32,7 +32,6 @@ struct MockedLoggerProvider: LoggerProviding {
     }
 }
 
-
 public protocol InjectionKey {
 
     /// The associated type representing the type of the dependency injection key's value.
@@ -50,10 +49,11 @@ private struct LoggerProviderKey: InjectionKey {
     static var currentValue: LoggerProviding = LoggerProvider()
 }
 
-/// Provides access to injected dependencies.
+/// Provides access to injected dependencies. This structure mainly acts as a dependency resolver.
 struct InjectedValues {
     
     /// This is only used as an accessor to the computed properties within extensions of `InjectedValues`.
+    ///  We defined a static property current as an accessor for our static subscript as key paths can only refer to non-static members.
     private static var current = InjectedValues()
     
     /// A static subscript for updating the `currentValue` of `InjectionKey` instances.
@@ -69,9 +69,6 @@ struct InjectedValues {
     }
 }
 
-/*
- 
-*/
 extension InjectedValues {
     var networkProvider: NetworkProviding {
         get { Self[NetworkProviderKey.self] }
